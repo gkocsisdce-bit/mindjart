@@ -209,7 +209,7 @@
 
         function startAdult(loc) {
             activeLoc = loc;
-            document.getElementById('loc-label').innerText = "Várható indulás " + loc + "-ról";
+            document.getElementById('loc-label').innerText = "Indulás a parkolóhoz" + loc + "-ról";
             goToStep('adult');
             timer = setInterval(updateAdult, 1000);
             updateAdult();
