@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Megbízhatóbb forrásból származó HD Zakynthos kép */
+            /* Saját feltöltött kép használata */
             --bg-image: url('Zbeach.jpg');
             --primary-blue: #0077be;
             --accent-gold: #f4d03f;
@@ -24,7 +24,6 @@
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #0c3d5d;
-            /* Fontos: itt a linear-gradient és a kép sorrendje */
             background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), var(--bg-image);
             background-size: cover;
             background-position: center center;
@@ -147,8 +146,8 @@
         <div id="felnott-select" class="hidden">
             <p>Melyik várostól indultok?</p>
             <div class="tiles">
-                <button class="tile" onclick="startAdult('Debrecen')">Debrecen</button>
-                <button class="tile" onclick="startAdult('Veresegyház')">Veresegyház</button>
+                <button class="tile" onclick="startAdult('Debrecenből')">Debrecenből</button>
+                <button class="tile" onclick="startAdult('Veresegyházról')">Veresegyházról</button>
             </div>
             <button class="back-btn" onclick="goToStep('step-1')">← Vissza</button>
         </div>
@@ -165,10 +164,10 @@
         <div id="view-adult" class="hidden">
             <div>
                 <span class="sub-label" id="loc-label">Indulás a parkolóhoz</span>
-                <span id="car-timer" class="time-val" style="font-size: clamp(1.4rem, 5vw, 2rem);">--</span>
+                <span id="car-timer" class="time-val" style="font-size: clamp(1.2rem, 5vw, 1.8rem);">--</span>
 
-                <span class="sub-label">Gépfelszállásig (12:30)</span>
-                <span id="flight-timer" class="time-val" style="font-size: clamp(1.4rem, 5vw, 2rem);">--</span>
+                <span class="sub-label">Gépfelszállásig (Jún 18. 12:30)</span>
+                <span id="flight-timer" class="time-val" style="font-size: clamp(1.2rem, 5vw, 1.8rem);">--</span>
             </div>
             <button class="back-btn" onclick="goToStep('step-1')">← Vissza</button>
         </div>
@@ -179,8 +178,8 @@
         const PARKING_TARGET = new Date("2026-06-18T10:00:00");
 
         const OFFSETS = {
-            "Debrecen": (2*60 + 40) * 60000,
-            "Veresegyház": (0*60 + 40) * 60000
+            "Debrecenből": (2*60 + 40) * 60000,
+            "Veresegyházról": (0*60 + 40) * 60000
         };
 
         let timer = null;
@@ -209,7 +208,7 @@
 
         function startAdult(loc) {
             activeLoc = loc;
-            document.getElementById('loc-label').innerText = "Indulás a parkolóhoz" + loc + "-ról";
+            document.getElementById('loc-label').innerText = "Indulás a parkolóhoz " + loc + " 🚗";
             goToStep('adult');
             timer = setInterval(updateAdult, 1000);
             updateAdult();
